@@ -17,7 +17,6 @@ pp1 = [];
 
 for i = 1:50:10001
         cla;
-
         axis([-3 3 -2 12 7 14]); 
         pp_ = position(:,i); 
         ww_ = w(:,:,i);
@@ -27,7 +26,7 @@ for i = 1:50:10001
         x = [];
         y = [];
         z = [];
-    for j = 1:m
+    for j = 1:m 
         p_poly(:,j) = [pp_(3*j-2); pp_(3*j-1); pp_(3*j)]; 
         p_poly1(:,j) = [pp1_(3*j-2); pp1_(3*j-1); pp1_(3*j)];
           if j ~= 1 
@@ -35,7 +34,6 @@ for i = 1:50:10001
              axis([-3 3 -2 12 7 14]); 
              hold on
              h = plot3(p_poly1(2,j),p_poly1(1,j),-p_poly1(3,j),'Color',[0.2 0.2 0.5],'Marker','.','MarkerSize',7,'EraseMode','xor');
-
              line([p_poly(2,1),p_poly(2,j)],[p_poly(1,1),p_poly(1,j)],-[p_poly(3,1),p_poly(3,j)],'Color',[128/255, 39/255, 3/255],'LineStyle','-','LineWidth',0.7);
              string = line([p_poly(2,j),p_poly1(2,j)],[p_poly(1,j),p_poly1(1,j)],-[p_poly(3,j),p_poly1(3,j)],'Color',[0.5 0.2 0.5],'LineStyle','-.','LineWidth',0.7);
              string.Color(4) = 0.3; 
@@ -67,6 +65,7 @@ for j = 1:m
         pp1 = [position1(3*j-2,:); position1(3*j-1,:); position1(3*j,:)]; 
         v_norm_ = velo_norm_(j,:);
         v_norm1_ = velo_norm1_(j,:);
+
         pp(:,end) = NaN;
         pp1(:,end) = NaN;
 
@@ -74,7 +73,6 @@ for j = 1:m
             g = patch(pp(2,:),pp(1,:),-pp(3,:), v_norm_,'EdgeColor','interp','LineWidth',2);
             axis([-3 3 -2 12 7 16]); 
             colorbar
-
             hold on
         end
 end
